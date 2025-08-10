@@ -1,0 +1,523 @@
+/* ===== BASE STYLES ===== */
+:root {
+  /* Color Scheme - Dark Theme (Default) */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-secondary: #f59e0b;
+  --color-accent: #10b981;
+  --color-danger: #ef4444;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-card: #1e293b;
+  --color-bg-modal: #1e293b;
+  
+  --color-text: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  
+  --color-border: #334155;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Light Theme Colors (will be toggled via JS) */
+  --color-light-bg: #f8fafc;
+  --color-light-bg-secondary: #e2e8f0;
+  --color-light-bg-card: #ffffff;
+  --color-light-text: #1e293b;
+  --color-light-text-secondary: #475569;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+body.light-theme {
+  --color-bg: var(--color-light-bg);
+  --color-bg-secondary: var(--color-light-bg-secondary);
+  --color-bg-card: var(--color-light-bg-card);
+  --color-bg-modal: var(--color-light-bg-card);
+  --color-text: var(--color-light-text);
+  --color-text-secondary: var(--color-light-text-secondary);
+  --color-border: #cbd5e1;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* ===== LAYOUT & CONTAINERS ===== */
+.app-container {
+  max-width: 100%;
+  min-height: 100vh;
+  padding-bottom: 80px; /* Space for bottom nav */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===== HEADER STYLES ===== */
+.app-header {
+  background-color: var(--color-bg-secondary);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px var(--color-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* ===== CARD STYLES ===== */
+.feature-card {
+  background-color: var(--color-bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px var(--color-shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px var(--color-shadow);
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.book { background-color: #6366f1; }
+.practice { background-color: #10b981; }
+.exam { background-color: #f59e0b; }
+.car { background-color: #3b82f6; }
+.setting { background-color: #f43f5e; }
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-sub {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* ===== BUTTON STYLES ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-border);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background-color: var(--color-danger);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* ===== FORM ELEMENTS ===== */
+input, select, textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-card);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* ===== LOADING ANIMATIONS ===== */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+/* ===== QUIZ SPECIFIC STYLES ===== */
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.quiz-header {
+  background-color: var(--color-bg-secondary);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.timer-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--color-warning);
+}
+
+.question-container {
+  padding: 1.5rem;
+  background-color: var(--color-bg-card);
+  border-radius: 12px;
+  margin: 1rem;
+  box-shadow: 0 4px 6px var(--color-shadow);
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background-color: var(--color-bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option-card:hover {
+  border-color: var(--color-primary);
+  transform: translateX(5px);
+}
+
+.option-card.selected {
+  border-color: var(--color-primary);
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background-color: var(--color-bg-modal);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px var(--color-shadow);
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (min-width: 768px) {
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== PWA SPECIFIC STYLES ===== */
+.pwa-install-prompt {
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-secondary);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -2px 10px var(--color-shadow);
+  z-index: 100;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.pwa-install-prompt.show {
+  transform: translateY(0);
+}
+
+/* ===== PREMIUM BADGES ===== */
+.premium-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #f59e0b, #f43f5e);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.premium-card {
+  border: 2px solid #f59e0b;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* ===== SCORECARD SPECIFIC ===== */
+.result-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: 12px;
+  margin: 1rem;
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.badge-icon {
+  font-size: 2rem;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-content {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* ===== DARK/LIGHT THEME TOGGLE ===== */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+  transform: rotate(30deg);
+}
+
+/* ===== PROGRESS BARS ===== */
+.progress-track {
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* ===== TABBED INTERFACE ===== */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1rem;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  border-bottom-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ===== TOOLTIPS ===== */
+.tooltip {
+  position: relative;
+}
+
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 2px 5px var(--color-shadow);
+}
