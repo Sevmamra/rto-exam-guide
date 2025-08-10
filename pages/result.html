@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="gu" class="dark-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Result | RTO Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- App Container -->
+  <div class="result-container" id="resultContainer">
+    <!-- Result Header -->
+    <header class="result-header">
+      <a href="../pages/index.html" class="back-btn">
+        <i class="fas fa-chevron-left"></i>
+      </a>
+      <h1 class="result-title" id="resultTitle">પરીક્ષા પરિણામ</h1>
+      <div class="header-actions">
+        <button class="icon-btn" id="shareBtn">
+          <i class="fas fa-share-alt"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Result Content -->
+    <main class="result-content">
+      <!-- Result Summary -->
+      <div class="result-summary">
+        <div class="result-badge" id="resultBadge">
+          <div class="badge-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="badge-content">
+            <h2 id="resultStatus">તમે પાસ થયા છો!</h2>
+            <div class="result-score" id="resultScore">87%</div>
+          </div>
+        </div>
+        
+        <div class="result-stats">
+          <div class="stat-item">
+            <div class="stat-icon correct">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label" id="correctLabel">સાચા જવાબો</span>
+              <span class="stat-value" id="correctValue">13/15</span>
+            </div>
+          </div>
+          
+          <div class="stat-item">
+            <div class="stat-icon time">
+              <i class="fas fa-stopwatch"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label" id="timeLabel">સમય</span>
+              <span class="stat-value" id="timeValue">10:24</span>
+            </div>
+          </div>
+          
+          <div class="stat-item">
+            <div class="stat-icon rank">
+              <i class="fas fa-medal"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label" id="rankLabel">રેન્ક</span>
+              <span class="stat-value" id="rankValue">Top 15%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Charts -->
+      <div class="performance-section">
+        <div class="section-header">
+          <h2 id="performanceTitle">પરફોર્મન્સ વિશ્લેષણ</h2>
+          <div class="section-badge">
+            <i class="fas fa-chart-line"></i>
+          </div>
+        </div>
+        
+        <div class="chart-container">
+          <canvas id="performanceChart"></canvas>
+        </div>
+        
+        <div class="chart-tabs">
+          <button class="chart-tab active" data-chart="accuracy" id="accuracyTab">
+            <i class="fas fa-bullseye"></i>
+            <span>એક્યુરસી</span>
+          </button>
+          <button class="chart-tab" data-chart="time" id="timeTab">
+            <i class="fas fa-stopwatch"></i>
+            <span>સમય</span>
+          </button>
+          <button class="chart-tab premium-tab" data-chart="comparison" id="comparisonTab">
+            <div class="premium-tag">PRO</div>
+            <i class="fas fa-users"></i>
+            <span>તુલના</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Topic Breakdown -->
+      <div class="topics-section">
+        <div class="section-header">
+          <h2 id="topicsTitle">ટોપિક પ્રમાણે પરફોર્મન્સ</h2>
+          <div class="section-badge">
+            <i class="fas fa-book-open"></i>
+          </div>
+        </div>
+        
+        <div class="topic-progress">
+          <div class="topic-item">
+            <div class="topic-info">
+              <span class="topic-name" id="topic1Name">ટ્રાફિક સાઇન્સ</span>
+              <span class="topic-score">80%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 80%"></div>
+            </div>
+          </div>
+          
+          <div class="topic-item">
+            <div class="topic-info">
+              <span class="topic-name" id="topic2Name">રોડ રૂલ્સ</span>
+              <span class="topic-score">92%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 92%"></div>
+            </div>
+          </div>
+          
+          <div class="topic-item">
+            <div class="topic-info">
+              <span class="topic-name" id="topic3Name">સેફ્ટી નિયમો</span>
+              <span class="topic-score">75%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 75%"></div>
+            </div>
+          </div>
+          
+          <div class="topic-item">
+            <div class="topic-info">
+              <span class="topic-name" id="topic4Name">વાહન જાણકારી</span>
+              <span class="topic-score">85%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Cards -->
+      <div class="action-cards">
+        <div class="action-card improve-card">
+          <div class="card-icon">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div class="card-content">
+            <h3 id="improveTitle">તમારી નબળાઈઓ સુધારો</h3>
+            <p id="improveText">ટોપિક્સ જ્યાં તમે સૌથી ખરાબ પરફોર્મ કર્યું</p>
+          </div>
+          <button class="btn-secondary" id="improveBtn">
+            <span id="improveBtnText">શરૂ કરો</span>
+          </button>
+        </div>
+        
+        <div class="action-card premium-card">
+          <div class="card-badge">PRO</div>
+          <div class="card-icon">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <div class="card-content">
+            <h3 id="personalizedTitle">વ્યક્તિગત શીખવાની યોજના</h3>
+            <p id="personalizedText">AI-જનરેટેડ પ્રેક્ટિસ પ્લાન</p>
+          </div>
+          <button class="btn-premium" id="personalizedBtn">
+            <i class="fas fa-crown"></i>
+            <span id="personalizedBtnText">અનલૉક કરો</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Result Footer -->
+    <footer class="result-footer">
+      <button class="btn-primary" id="scorecardBtn">
+        <i class="fas fa-award"></i>
+        <span id="scorecardBtnText">સંપૂર્ણ સ્કોરકાર્ડ જુઓ</span>
+      </button>
+      <button class="btn-secondary" id="retryBtn">
+        <i class="fas fa-redo"></i>
+        <span id="retryBtnText">ફરીથી પરીક્ષા આપો</span>
+      </button>
+    </footer>
+
+    <!-- Share Modal -->
+    <div class="modal-overlay hidden" id="shareModal">
+      <div class="share-modal">
+        <div class="modal-header">
+          <h3 id="shareModalTitle">તમારું પરિણામ શેર કરો</h3>
+          <button class="modal-close" id="closeShareModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="share-options">
+            <button class="share-option" id="whatsappShare">
+              <i class="fab fa-whatsapp"></i>
+              <span>WhatsApp</span>
+            </button>
+            <button class="share-option" id="facebookShare">
+              <i class="fab fa-facebook"></i>
+              <span>Facebook</span>
+            </button>
+            <button class="share-option" id="twitterShare">
+              <i class="fab fa-twitter"></i>
+              <span>Twitter</span>
+            </button>
+            <button class="share-option" id="copyLink">
+              <i class="fas fa-link"></i>
+              <span id="copyLinkText">લિંક કોપી કરો</span>
+            </button>
+          </div>
+          <div class="share-preview">
+            <div class="preview-card">
+              <div class="preview-header">
+                <img src="../assets/images/logo-icon.svg" alt="RTO Pro" class="preview-logo">
+                <div class="preview-text">
+                  <h4 id="previewTitle">મારું RTO પરીક્ષા પરિણામ</h4>
+                  <p id="previewText">મેં 15 માંથી 13 પ્રશ્નોના સાચા જવાબ આપ્યા (87%)</p>
+                </div>
+              </div>
+              <div class="preview-image">
+                <div class="preview-percentage">87%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Premium Modal -->
+    <div class="modal-overlay hidden" id="premiumModal">
+      <div class="premium-modal">
+        <div class="modal-header">
+          <h3 id="premiumModalTitle">પ્રીમિયમ સુવિધાઓ અનલૉક કરો</h3>
+          <button class="modal-close" id="closePremiumModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="premium-feature">
+            <div class="feature-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <div class="feature-text">
+              <h4 id="feature1Title">વિસ્તૃત એનાલિટિક્સ</h4>
+              <p id="feature1Desc">તમારી પ્રગતિ અને તુલનાત્મક વિશ્લેષણ</p>
+            </div>
+          </div>
+          
+          <div class="premium-feature">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="feature-text">
+              <h4 id="feature2Title">AI-જનરેટેડ પ્રેક્ટિસ</h4>
+              <p id="feature2Desc">તમારી નબળાઈઓ પર આધારિત પ્રશ્નો</p>
+            </div>
+          </div>
+          
+          <div class="premium-feature">
+            <div class="feature-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="feature-text">
+              <h4 id="feature3Title">રેન્કિંગ સિસ્ટમ</h4>
+              <p id="feature3Desc">અન્ય યુઝર્સ સાથે તમારી તુલના કરો</p>
+            </div>
+          </div>
+          
+          <button class="btn-premium" id="upgradeNowBtn">
+            <i class="fas fa-crown"></i>
+            <span id="upgradeNowText">હમણાં અપગ્રેડ કરો</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Chart.js Implementation
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 'Q15'],
+        datasets: [{
+          label: 'Time Taken (sec)',
+          data: [20, 15, 25, 30, 18, 22, 28, 35, 40, 18, 15, 25, 30, 22, 45],
+          backgroundColor: '#3b82f6',
+          borderColor: '#2563eb',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Seconds'
+            }
+          }
+        }
+      }
+    });
+
+    // Tab switching functionality
+    const chartTabs = document.querySelectorAll('.chart-tab');
+    chartTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        if(tab.classList.contains('premium-tab')) {
+          document.getElementById('premiumModal').classList.remove('hidden');
+          return;
+        }
+        
+        chartTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Update chart based on selected tab
+        const chartType = tab.dataset.chart;
+        updateChart(chartType);
+      });
+    });
+
+    function updateChart(type) {
+      // This would update the chart based on selected type
+      // Implementation would depend on your data structure
+    }
+  </script>
+  <script src="../assets/js/result.js"></script>
+</body>
+</html>
