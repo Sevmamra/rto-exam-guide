@@ -1,0 +1,16 @@
+{
+  "name": "Gujarat RTO Exam Guide",
+  "short_name": "RTO Guide",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#ffcc00",
+  "icons": [
+    {
+      "src": "assets/images/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    // Add other icon sizes
+  ]
+}
