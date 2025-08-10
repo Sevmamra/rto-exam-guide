@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="gu" class="dark-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Center | RTO Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0f172a">
+</head>
+<body>
+  <!-- App Loading Screen -->
+  <div class="app-loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="../assets/images/logo-icon.svg" alt="RTO Pro Logo">
+        <div class="pulse-animation"></div>
+      </div>
+      <h2 class="loader-text" id="loaderText">Preparing Exam Environment...</h2>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App Container -->
+  <div class="app-container" id="appContainer">
+    <!-- Exam Header -->
+    <header class="exam-header">
+      <div class="header-left">
+        <a href="../pages/index.html" class="back-btn">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <h1 class="exam-title" id="examTitle">પરીક્ષા કેન્દ્ર</h1>
+      </div>
+      <div class="header-right">
+        <div class="header-badge">
+          <i class="fas fa-crown"></i>
+          <span id="premiumBadge">PRO</span>
+        </div>
+        <div class="lang-selector dropdown">
+          <button class="icon-btn">
+            <i class="fas fa-globe"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" onclick="changeLang('gu')">ગુજરાતી</a>
+            <a href="#" onclick="changeLang('en')">English</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Exam Dashboard -->
+    <div class="exam-dashboard">
+      <!-- Exam Type Selector -->
+      <div class="exam-type-selector">
+        <div class="section-header">
+          <h2 id="examTypeTitle">પરીક્ષા પ્રકાર પસંદ કરો</h2>
+          <div class="section-badge">
+            <i class="fas fa-info-circle"></i>
+          </div>
+        </div>
+        
+        <div class="exam-type-grid">
+          <div class="exam-type-card active" id="marksExam">
+            <div class="exam-icon">
+              <i class="fas fa-hashtag"></i>
+            </div>
+            <h3 id="marksExamTitle">માર્ક્સ દ્વારા</h3>
+            <p id="marksExamDesc">કસ્ટમ પરીક્ષા બનાવો</p>
+          </div>
+          
+          <div class="exam-type-card" id="timeExam">
+            <div class="exam-icon">
+              <i class="fas fa-stopwatch"></i>
+            </div>
+            <h3 id="timeExamTitle">સમય દ્વારા</h3>
+            <p id="timeExamDesc">ટાઇમ્ડ પરીક્ષા</p>
+          </div>
+          
+          <div class="exam-type-card premium-card" id="mockExam">
+            <div class="card-badge">PRO</div>
+            <div class="exam-icon">
+              <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h3 id="mockExamTitle">મોક ટેસ્ટ</h3>
+            <p id="mockExamDesc">RTO જેવું અનુભવો</p>
+          </div>
+          
+          <div class="exam-type-card premium-card" id="chapterExam">
+            <div class="card-badge">PRO</div>
+            <div class="exam-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <h3 id="chapterExamTitle">અધ્યાય પ્રમાણે</h3>
+            <p id="chapterExamDesc">ટોપિક-વાઇઝ પરીક્ષા</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exam Configuration -->
+      <div class="exam-configuration">
+        <div class="section-header">
+          <h2 id="configTitle">પરીક્ષા કન્ફિગર કરો</h2>
+          <div class="section-badge">
+            <i class="fas fa-sliders-h"></i>
+          </div>
+        </div>
+        
+        <div class="config-form">
+          <!-- Marks Selection -->
+          <div class="config-field" id="marksField">
+            <label for="examMarks" id="marksLabel">પરીક્ષા માર્ક્સ</label>
+            <div class="input-group">
+              <input type="number" id="examMarks" min="5" max="100" value="15">
+              <span class="input-suffix" id="marksSuffix">માર્ક્સ</span>
+            </div>
+            <div class="input-hint" id="marksHint">(ન્યૂનતમ 5, મહત્તમ 100)</div>
+          </div>
+          
+          <!-- Time Selection (hidden by default) -->
+          <div class="config-field hidden" id="timeField">
+            <label for="examTime" id="timeLabel">પરીક્ષા સમય</label>
+            <div class="input-group">
+              <input type="number" id="examTime" min="5" max="60" value="15">
+              <span class="input-suffix" id="timeSuffix">મિનિટ</span>
+            </div>
+            <div class="input-hint" id="timeHint">(ન્યૂનતમ 5, મહત્તમ 60)</div>
+          </div>
+          
+          <!-- Difficulty Selection -->
+          <div class="config-field">
+            <label id="difficultyLabel">ડિફિકલ્ટી લેવલ</label>
+            <div class="difficulty-selector">
+              <div class="difficulty-option active" data-level="easy">
+                <span id="easyLabel">સરળ</span>
+              </div>
+              <div class="difficulty-option" data-level="medium">
+                <span id="mediumLabel">મધ્યમ</span>
+              </div>
+              <div class="difficulty-option" data-level="hard">
+                <span id="hardLabel">કઠિન</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Question Types -->
+          <div class="config-field">
+            <label id="questionTypesLabel">પ્રશ્નોના પ્રકાર</label>
+            <div class="checkbox-group">
+              <label class="checkbox-container" id="mcqLabel">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                MCQ પ્રશ્નો
+              </label>
+              <label class="checkbox-container" id="imageLabel">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                ઇમેજ પ્રશ્નો
+              </label>
+              <label class="checkbox-container premium-feature" id="scenarioLabel">
+                <div class="premium-tag">PRO</div>
+                <input type="checkbox" disabled>
+                <span class="checkmark"></span>
+                સ્કેનારિયો પ્રશ્નો
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exam Actions -->
+      <div class="exam-actions">
+        <button class="btn-secondary" id="advancedSettingsBtn">
+          <i class="fas fa-cog"></i>
+          <span id="settingsBtnText">એડવાંસ્ડ સેટિંગ્સ</span>
+        </button>
+        <button class="btn-primary" id="startExamBtn">
+          <i class="fas fa-play"></i>
+          <span id="startExamBtnText">પરીક્ષા શરૂ કરો</span>
+        </button>
+      </div>
+
+      <!-- Recent Performance -->
+      <div class="performance-section">
+        <div class="section-header">
+          <h2 id="performanceTitle">તાજેતરનું પરફોર્મન્સ</h2>
+          <a href="../pages/scorecard.html" class="view-all" id="viewAllText">બધા જુઓ</a>
+        </div>
+        
+        <div class="performance-cards">
+          <div class="performance-card">
+            <div class="performance-meta">
+              <span class="performance-date">આજે</span>
+              <span class="performance-score correct">80%</span>
+            </div>
+            <div class="performance-progress">
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="performance-details">
+              <span class="performance-type">15 માર્ક્સ</span>
+              <span class="performance-time">12 મિનિટ</span>
+            </div>
+          </div>
+          
+          <div class="performance-card">
+            <div class="performance-meta">
+              <span class="performance-date">ગઇકાલે</span>
+              <span class="performance-score incorrect">65%</span>
+            </div>
+            <div class="performance-progress">
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="performance-details">
+              <span class="performance-type">20 માર્ક્સ</span>
+              <span class="performance-time">18 મિનિટ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Premium Upgrade Modal -->
+    <div class="modal-overlay hidden" id="premiumModal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h3 id="premiumModalTitle">પ્રીમિયમ સુવિધા અનલૉક કરો</h3>
+          <button class="modal-close" id="closePremiumModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="premium-feature-list">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-infinity"></i>
+              </div>
+              <div class="feature-text">
+                <h4 id="feature1Title">અમર્યાદિત મોક ટેસ્ટ</h4>
+                <p id="feature1Desc">50+ RTO જેવા મોડેલ પેપર્સ</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="feature-text">
+                <h4 id="feature2Title">ડિટેઇલ્ડ એનાલિસિસ</h4>
+                <p id="feature2Desc">તમારી શક્તિ અને નબળાઇ જુઓ</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <div class="feature-text">
+                <h4 id="feature3Title">અધ્યાય પ્રમાણે પરીક્ષા</h4>
+                <p id="feature3Desc">ટોપિક-વાઇઝ પ્રેક્ટિસ</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="premium-pricing">
+            <div class="pricing-card recommended">
+              <div class="pricing-header">
+                <h4 id="plan1Title">વાર્ષિક પ્લાન</h4>
+                <div class="price-tag">
+                  <span class="price" id="plan1Price">₹199</span>
+                  <span class="duration" id="plan1Duration">/વર્ષ</span>
+                </div>
+              </div>
+              <ul class="pricing-features">
+                <li id="plan1Feature1">બધી પ્રીમિયમ સુવિધાઓ</li>
+                <li id="plan1Feature2">7-દિવસ રિફંડ ગેરંટી</li>
+                <li id="plan1Feature3">સપોર્ટ પ્રાયોરિટી</li>
+              </ul>
+              <button class="btn-premium" id="subscribeAnnualBtn">
+                <i class="fas fa-crown"></i>
+                <span id="subscribeAnnualText">સબ્સ્ક્રાઇબ કરો</span>
+              </button>
+            </div>
+            
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h4 id="plan2Title">માસિક પ્લાન</h4>
+                <div class="price-tag">
+                  <span class="price" id="plan2Price">₹29</span>
+                  <span class="duration" id="plan2Duration">/મહિનો</span>
+                </div>
+              </div>
+              <ul class="pricing-features">
+                <li id="plan2Feature1">બધી પ્રીમિયમ સુવિધાઓ</li>
+                <li id="plan2Feature2">કોઈ કોન્ટ્રાક્ટ નહીં</li>
+                <li id="plan2Feature3">કોઈ રિફંડ નહીં</li>
+              </ul>
+              <button class="btn-secondary" id="subscribeMonthlyBtn">
+                <span id="subscribeMonthlyText">સબ્સ્ક્રાઇબ કરો</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/exam-config.js"></script>
+</body>
+</html>
