@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="gu" class="dark-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scorecard | RTO Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0f172a">
+</head>
+<body>
+  <!-- App Container -->
+  <div class="scorecard-container" id="scorecardContainer">
+    <!-- Scorecard Header -->
+    <header class="scorecard-header">
+      <a href="../pages/result.html" class="back-btn">
+        <i class="fas fa-chevron-left"></i>
+      </a>
+      <h1 class="scorecard-title" id="scorecardTitle">સ્કોરકાર્ડ</h1>
+      <div class="header-actions">
+        <button class="icon-btn" id="downloadBtn">
+          <i class="fas fa-download"></i>
+        </button>
+        <button class="icon-btn" id="printBtn">
+          <i class="fas fa-print"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Scorecard Body -->
+    <main class="scorecard-body">
+      <!-- Exam Summary -->
+      <div class="exam-summary">
+        <div class="summary-card">
+          <div class="summary-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="summary-content">
+            <span class="summary-label" id="dateLabel">તારીખ</span>
+            <span class="summary-value" id="dateValue">15 મે, 2023</span>
+          </div>
+        </div>
+        
+        <div class="summary-card">
+          <div class="summary-icon">
+            <i class="fas fa-hashtag"></i>
+          </div>
+          <div class="summary-content">
+            <span class="summary-label" id="marksLabel">માર્ક્સ</span>
+            <span class="summary-value" id="marksValue">15</span>
+          </div>
+        </div>
+        
+        <div class="summary-card">
+          <div class="summary-icon">
+            <i class="fas fa-stopwatch"></i>
+          </div>
+          <div class="summary-content">
+            <span class="summary-label" id="durationLabel">સમય</span>
+            <span class="summary-value" id="durationValue">10:24</span>
+          </div>
+        </div>
+        
+        <div class="summary-card">
+          <div class="summary-icon">
+            <i class="fas fa-percentage"></i>
+          </div>
+          <div class="summary-content">
+            <span class="summary-label" id="scoreLabel">સ્કોર</span>
+            <span class="summary-value" id="scoreValue">87%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Badge -->
+      <div class="result-badge">
+        <div class="badge-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="badge-content">
+          <h2 id="resultStatus">પાસ</h2>
+          <p id="resultDescription">તમે પરીક્ષામાં સફળતાપૂર્વક ઉત્તીર્ણ થયા છો!</p>
+        </div>
+      </div>
+
+      <!-- Detailed Results -->
+      <div class="detailed-results">
+        <div class="section-header">
+          <h2 id="detailedTitle">વિગતવાર પરિણામો</h2>
+          <div class="section-badge">
+            <i class="fas fa-list-ol"></i>
+          </div>
+        </div>
+        
+        <!-- Question Results -->
+        <div class="question-results">
+          <!-- Correct Answer Example -->
+          <div class="question-card correct">
+            <div class="question-header">
+              <span class="question-number">1.</span>
+              <span class="question-status">
+                <i class="fas fa-check-circle"></i>
+                <span id="correctText">સાચું</span>
+              </span>
+            </div>
+            <div class="question-text" id="question1Text">
+              રાહદારીઓ માટેના ક્રોસિંગ ઉપર રાહદારી રોડ ક્રોસ કરવા ઉભા હોય ત્યારે તમે શું કરશો?
+            </div>
+            <div class="question-response">
+              <div class="response-answer">
+                <span class="response-label" id="yourAnswerLabel">તમારો જવાબ:</span>
+                <span class="response-value correct">વાહન ઉભું રાખી દઈ રાહદારીઓ રોડ ક્રોસ કરી લે ત્યાં સુધી થોભી પછી આગળ વધશો</span>
+              </div>
+              <div class="response-time">
+                <i class="fas fa-clock"></i>
+                <span>20 સેકન્ડ</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Incorrect Answer Example -->
+          <div class="question-card incorrect">
+            <div class="question-header">
+              <span class="question-number">2.</span>
+              <span class="question-status">
+                <i class="fas fa-times-circle"></i>
+                <span id="incorrectText">ખોટું</span>
+              </span>
+            </div>
+            <div class="question-text" id="question2Text">
+              નીચેની નિશાની શું બતાવે છે?
+            </div>
+            <div class="question-image-container">
+              <img src="../assets/images/traffic-signs/IMG_2880.jpeg" alt="Traffic Sign" class="question-image">
+            </div>
+            <div class="question-response">
+              <div class="response-answer">
+                <span class="response-label" id="yourAnswerLabel2">તમારો જવાબ:</span>
+                <span class="response-value incorrect">નો પાર્કિંગ</span>
+              </div>
+              <div class="response-answer">
+                <span class="response-label" id="correctAnswerLabel">સાચો જવાબ:</span>
+                <span class="response-value correct">વાહન થોભો</span>
+              </div>
+              <div class="response-time">
+                <i class="fas fa-clock"></i>
+                <span>35 સેકન્ડ</span>
+              </div>
+            </div>
+            <div class="question-explanation">
+              <div class="explanation-header">
+                <i class="fas fa-lightbulb"></i>
+                <h3 id="explanationTitle">સમજૂતી</h3>
+              </div>
+              <p id="explanationText">
+                આ ટ્રાફિક સાઇન "સ્ટોપ" નો દર્શાવે છે. જ્યારે તમે આ નિશાની જુઓ તો તમારે તમારું વાહન સંપૂર્ણ રીતે ઉભું રાખવું જોઈએ અને સલામતી ચેક કરીને જ આગળ વધવું જોઈએ.
+              </p>
+            </div>
+          </div>
+          
+          <!-- More questions would appear here -->
+        </div>
+      </div>
+
+      <!-- Performance Insights -->
+      <div class="performance-insights">
+        <div class="section-header">
+          <h2 id="insightsTitle">પરફોર્મન્સ ઇનસાઇટ્સ</h2>
+          <div class="section-badge">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+        </div>
+        
+        <div class="insights-grid">
+          <div class="insight-card">
+            <div class="insight-icon fast">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="insight-content">
+              <h3 id="fastestTopicTitle">સૌથી ઝડપી ટોપિક</h3>
+              <p class="insight-value" id="fastestTopicValue">રોડ રૂલ્સ</p>
+              <p class="insight-meta" id="fastestTopicTime">સરેરાશ 15 સેકન્ડ/પ્રશ્ન</p>
+            </div>
+          </div>
+          
+          <div class="insight-card">
+            <div class="insight-icon slow">
+              <i class="fas fa-turtle"></i>
+            </div>
+            <div class="insight-content">
+              <h3 id="slowestTopicTitle">સૌથી ધીમો ટોપિક</h3>
+              <p class="insight-value" id="slowestTopicValue">ટ્રાફિક સાઇન્સ</p>
+              <p class="insight-meta" id="slowestTopicTime">સરેરાશ 32 સેકન્ડ/પ્રશ્ન</p>
+            </div>
+          </div>
+          
+          <div class="insight-card">
+            <div class="insight-icon strong">
+              <i class="fas fa-thumbs-up"></i>
+            </div>
+            <div class="insight-content">
+              <h3 id="strongestAreaTitle">સૌથી મજબૂત ક્ષેત્ર</h3>
+              <p class="insight-value" id="strongestAreaValue">વાહન જાણકારી</p>
+              <p class="insight-meta" id="strongestAreaScore">100% સાચા જવાબો</p>
+            </div>
+          </div>
+          
+          <div class="insight-card premium-insight">
+            <div class="premium-tag">PRO</div>
+            <div class="insight-icon weak">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="insight-content">
+              <h3 id="weakestAreaTitle">સૌથી નબળું ક્ષેત્ર</h3>
+              <p class="insight-value" id="weakestAreaValue">સેફ્ટી નિયમો</p>
+              <p class="insight-meta" id="weakestAreaScore">60% સાચા જવાબો</p>
+            </div>
+            <button class="btn-premium-sm" id="upgradeInsightBtn">
+              <i class="fas fa-lock"></i>
+              <span id="upgradeInsightText">અનલૉક કરો</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Improvement Plan -->
+      <div class="improvement-plan">
+        <div class="section-header">
+          <h2 id="improvementTitle">સુધારાની યોજના</h2>
+          <div class="section-badge">
+            <i class="fas fa-bullseye"></i>
+          </div>
+        </div>
+        
+        <div class="plan-steps">
+          <div class="plan-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3 id="step1Title">ટ્રાફિક સાઇન્સ પર ધ્યાન કેન્દ્રિત કરો</h3>
+              <p id="step1Desc">તમે ટ્રાફિક સાઇન્સના પ્રશ્નોમાં સૌથી વધુ ભૂલો કરી છે</p>
+            </div>
+            <a href="../pages/practice.html?topic=traffic_signs" class="btn-secondary-sm" id="practiceStep1Btn">
+              <i class="fas fa-pen"></i>
+              <span id="practiceText">પ્રેક્ટિસ</span>
+            </a>
+          </div>
+          
+          <div class="plan-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3 id="step2Title">સેફ્ટી નિયમોનું પુનરાવર્તન કરો</h3>
+              <p id="step2Desc">આ ટોપિક પર તમારો સ્કોર સરેરાશથી નીચો છે</p>
+            </div>
+            <a href="../pages/practice.html?topic=safety_rules" class="btn-secondary-sm" id="practiceStep2Btn">
+              <i class="fas fa-pen"></i>
+              <span id="practiceText2">પ્રેક્ટિસ</span>
+            </a>
+          </div>
+          
+          <div class="plan-step premium-step">
+            <div class="premium-tag">PRO</div>
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3 id="step3Title">વ્યક્તિગત AI-જનરેટેડ ટેસ્ટ લો</h3>
+              <p id="step3Desc">તમારી નબળાઈઓ પર આધારિત કસ્ટમ પરીક્ષા</p>
+            </div>
+            <button class="btn-premium-sm" id="upgradeStepBtn">
+              <i class="fas fa-crown"></i>
+              <span id="upgradeStepText">અપગ્રેડ કરો</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scorecard Footer -->
+    <footer class="scorecard-footer">
+      <button class="btn-primary" id="retakeExamBtn">
+        <i class="fas fa-redo"></i>
+        <span id="retakeExamText">ફરીથી પરીક્ષા આપો</span>
+      </button>
+      <button class="btn-secondary" id="homeBtn">
+        <i class="fas fa-home"></i>
+        <span id="homeText">હોમ પેજ</span>
+      </button>
+    </footer>
+
+    <!-- Download Options Modal -->
+    <div class="modal-overlay hidden" id="downloadModal">
+      <div class="download-modal">
+        <div class="modal-header">
+          <h3 id="downloadModalTitle">સ્કોરકાર્ડ ડાઉનલોડ કરો</h3>
+          <button class="modal-close" id="closeDownloadModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="download-options">
+            <button class="download-option" id="downloadPDF">
+              <i class="fas fa-file-pdf"></i>
+              <span>PDF ફોર્મેટ</span>
+            </button>
+            <button class="download-option" id="downloadImage">
+              <i class="fas fa-file-image"></i>
+              <span>ઇમેજ ફોર્મેટ</span>
+            </button>
+            <button class="download-option premium-option" id="downloadDetailed">
+              <div class="premium-tag">PRO</div>
+              <i class="fas fa-file-alt"></i>
+              <span>વિગતવાર રિપોર્ટ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Print Preview Modal -->
+    <div class="modal-overlay hidden" id="printModal">
+      <div class="print-modal">
+        <div class="modal-header">
+          <h3 id="printModalTitle">પ્રિન્ટ પ્રીવ્યુ</h3>
+          <div class="header-actions">
+            <button class="icon-btn" id="printNowBtn">
+              <i class="fas fa-print"></i>
+              <span id="printNowText">પ્રિન્ટ કરો</span>
+            </button>
+            <button class="modal-close" id="closePrintModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="modal-content">
+          <div class="print-preview" id="printPreview">
+            <!-- Printable content will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/scorecard.js"></script>
+</body>
+</html>
