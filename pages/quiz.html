@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="gu" class="dark-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Session | RTO Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0f172a">
+</head>
+<body>
+  <!-- App Container -->
+  <div class="quiz-container" id="quizContainer">
+    <!-- Exam Header -->
+    <header class="quiz-header">
+      <div class="header-left">
+        <button class="exit-btn" id="exitBtn">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="exam-progress">
+          <div class="progress-track">
+            <div class="progress-fill" id="globalProgress" style="width: 0%"></div>
+          </div>
+          <span class="progress-text" id="progressText">0/15</span>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <div class="timer-container">
+          <i class="fas fa-clock"></i>
+          <span class="timer" id="timer">45:00</span>
+        </div>
+        <div class="header-badge">
+          <i class="fas fa-crown"></i>
+          <span>PRO</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Exam Body -->
+    <main class="quiz-body">
+      <!-- Question Container -->
+      <div class="question-container">
+        <div class="question-header">
+          <span class="question-number" id="questionNumber">પ્રશ્ન 1</span>
+          <span class="question-marks" id="questionMarks">1 માર્ક</span>
+        </div>
+        
+        <div class="question-text" id="questionText">
+          રાહદારીઓ માટેના ક્રોસિંગ ઉપર રાહદારી રોડ ક્રોસ કરવા ઉભા હોય ત્યારે તમે શું કરશો?
+        </div>
+        
+        <div class="question-image-container" id="questionImageContainer">
+          <img src="../assets/images/traffic-signs/IMG_2880.jpeg" alt="Traffic Sign" class="question-image" id="questionImage">
+          <button class="zoom-btn" id="zoomBtn">
+            <i class="fas fa-search-plus"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Options Container -->
+      <div class="options-container" id="optionsContainer">
+        <div class="option-card" data-option="1">
+          <div class="option-letter">A</div>
+          <div class="option-text" id="option1Text">હોર્ન વગાડી આગળ વધશો</div>
+          <div class="option-selector">
+            <div class="selector-circle"></div>
+          </div>
+        </div>
+        
+        <div class="option-card" data-option="2">
+          <div class="option-letter">B</div>
+          <div class="option-text" id="option2Text">વાહન ધીમી ઝડપે લઇ જશો</div>
+          <div class="option-selector">
+            <div class="selector-circle"></div>
+          </div>
+        </div>
+        
+        <div class="option-card" data-option="3">
+          <div class="option-letter">C</div>
+          <div class="option-text" id="option3Text">વાહન ઉભું રાખી દઈ રાહદારીઓ રોડ ક્રોસ કરી લે ત્યાં સુધી થોભી પછી આગળ વધશો</div>
+          <div class="option-selector">
+            <div class="selector-circle"></div>
+          </div>
+        </div>
+        
+        <div class="option-card premium-option" data-option="4">
+          <div class="premium-tag">PRO</div>
+          <div class="option-letter">D</div>
+          <div class="option-text" id="option4Text">રાહદારીને સાઇડ લેવા કહી આગળ વધશો</div>
+          <div class="option-selector">
+            <div class="selector-circle"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Explanation Container (Initially Hidden) -->
+      <div class="explanation-container hidden" id="explanationContainer">
+        <div class="explanation-header">
+          <i class="fas fa-lightbulb"></i>
+          <h3 id="explanationTitle">સમજૂતી અને ટીપ્સ</h3>
+        </div>
+        <div class="explanation-text" id="explanationText">
+          ટ્રાફિક નિયમો મુજબ, જ્યારે રાહદારીઓ ક્રોસિંગ પર હોય તો તમારે તમારું વાહન સંપૂર્ણપણે ઉભું રાખવું જોઈએ અને તમે ત્યારે જ આગળ વધવું જોઈએ જ્યારે રાહદારીઓ સલામત રીતે રસ્તો પાર કરી લે. આ તમારી અને રાહદારીઓ બંનેની સલામતી માટે જરૂરી છે.
+        </div>
+        <div class="explanation-reference" id="referenceText">
+          <strong>સંદર્ભ:</strong> ગુજરાત મોટર વાહન નિયમો, ધારો 12, કલમ 5
+        </div>
+      </div>
+    </main>
+
+    <!-- Quiz Footer -->
+    <footer class="quiz-footer">
+      <div class="footer-left">
+        <button class="btn-secondary" id="hintBtn">
+          <i class="fas fa-lightbulb"></i>
+          <span id="hintText">હિન્ટ</span>
+        </button>
+        <button class="btn-secondary" id="explanationBtn">
+          <i class="fas fa-info-circle"></i>
+          <span id="explanationBtnText">સમજૂતી</span>
+        </button>
+      </div>
+      
+      <div class="footer-right">
+        <button class="btn-primary" id="nextBtn">
+          <span id="nextBtnText">આગળ</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Image Zoom Modal -->
+    <div class="modal-overlay hidden" id="imageModal">
+      <div class="image-modal-container">
+        <button class="modal-close" id="closeImageModal">
+          <i class="fas fa-times"></i>
+        </button>
+        <img src="" alt="Zoomed Image" class="zoomed-image" id="zoomedImage">
+        <div class="image-caption" id="imageCaption">Traffic Sign</div>
+      </div>
+    </div>
+
+    <!-- Exit Confirmation Modal -->
+    <div class="modal-overlay hidden" id="exitModal">
+      <div class="confirmation-modal">
+        <div class="modal-header">
+          <h3 id="exitModalTitle">પરીક્ષા છોડી દો?</h3>
+        </div>
+        <div class="modal-content">
+          <p id="exitModalText">તમે હજુ પરીક્ષા પૂર્ણ કરી નથી. તમે ખાતરી કરો છો કે તમે બહાર નીકળવા માંગો છો?</p>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="cancelExitBtn">
+            <span id="cancelExitText">રદ કરો</span>
+          </button>
+          <button class="btn-danger" id="confirmExitBtn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span id="confirmExitText">બહાર નીકળો</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hint Modal -->
+    <div class="modal-overlay hidden" id="hintModal">
+      <div class="hint-modal">
+        <div class="modal-header">
+          <i class="fas fa-lightbulb"></i>
+          <h3 id="hintModalTitle">હિન્ટ</h3>
+        </div>
+        <div class="modal-content">
+          <p id="hintModalText">રાહદારીઓને પ્રાથમિકતા આપવાનું યાદ રાખો. સલામતી હંમેશા પ્રથમ પ્રાથમિકતા છે.</p>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-primary" id="gotItBtn">
+            <span id="gotItText">સમજાઇ ગયું</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Completed Screen -->
+  <div class="quiz-completed hidden" id="quizCompleted">
+    <div class="completed-container">
+      <div class="result-animation">
+        <div class="animation-circle">
+          <svg class="progress-ring" width="200" height="200">
+            <circle class="progress-ring-circle" stroke-width="8" fill="transparent" r="90" cx="100" cy="100"/>
+          </svg>
+          <div class="result-percentage" id="resultPercentage">87%</div>
+        </div>
+        <div class="result-icon">
+          <i class="fas fa-trophy"></i>
+        </div>
+      </div>
+      
+      <div class="result-content">
+        <h2 id="resultTitle">પરીક્ષા પૂર્ણ!</h2>
+        <p class="result-text" id="resultDesc">તમે 15 માંથી 13 પ્રશ્નોના સાચા જવાબ આપ્યા!</p>
+        
+        <div class="result-stats">
+          <div class="stat-item">
+            <div class="stat-icon correct">
+              <i class="fas fa-check"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="correctStat">13</span>
+              <span class="stat-label" id="correctLabel">સાચા</span>
+            </div>
+          </div>
+          
+          <div class="stat-item">
+            <div class="stat-icon incorrect">
+              <i class="fas fa-times"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="incorrectStat">2</span>
+              <span class="stat-label" id="incorrectLabel">ખોટા</span>
+            </div>
+          </div>
+          
+          <div class="stat-item">
+            <div class="stat-icon time">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="timeStat">10:24</span>
+              <span class="stat-label" id="timeLabel">સમય</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="result-actions">
+          <button class="btn-secondary" id="reviewBtn">
+            <i class="fas fa-list-ol"></i>
+            <span id="reviewText">રીવ્યુ કરો</span>
+          </button>
+          <button class="btn-primary" id="scorecardBtn">
+            <i class="fas fa-award"></i>
+            <span id="scorecardText">સ્કોરકાર્ડ જુઓ</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/quiz-engine.js"></script>
+</body>
+</html>
